@@ -1,0 +1,21 @@
+{
+  "name": "trade",
+  "version": "0.1.0",
+  "description": "trade for ltc & btc",
+  "main": "trade.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aazhou/coin-monitor.git"
+  },
+  "keywords": [
+    "btc",
+    "ltc"
+  ],
+  "author": "aazhou",
+  "license": "BSD-2-Clause",
+  "dependencies" : {
+    "request" : "~2.34.0",
+    "node-mailer" : "~0.1.1",
+    "moment" : "~2.6.0"
+  }
+}
