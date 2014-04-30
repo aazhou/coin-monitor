@@ -37,13 +37,12 @@ var Monitor = function () {
 		    service: "qq",
 		    auth: {
 		        user: "zhoulong@fishsaying.com",
-		        pass: "aaron880803"
+		        pass: "xxxxxx"
 		    }
 		});
 		var mailOptions = {
 		    from: "Aaron.L.Zhou <zhoulong@fishsaying.com>",
-		    to: 'zhoulong@fishsaying.com, vigorpro@gmail.com, livehl@126.com', 
-		    // to: 'zhoulong@fishsaying.com', 
+		    to: 'zhoulong@fishsaying.com, vigorpro@gmail.com, livehl@126.com',
 		    subject: "OKCoin 价格监控通知", 
 		    text: content
 		};
