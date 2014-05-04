@@ -12,22 +12,19 @@ var Monitor = function () {
 
 	this.fetchTicker = function () {
 		request(okTickerUrl, function (error, resp, body) {
-			if (error) {
-				console.error(error);
-				return;
+			if (!error && resp.statusCode == 200) {
+				var result = JSON.parse(body);
+				var current = parseFloat(result.ticker.last);
+				var changePercent = ((current - last) / current) * 100;
+
+				var content = util.format('[%s]\n当前价格为: %s\n上一次价格: %s\n变动比率:%s% \n==============', moment().format('MMMM Do YYYY, h:mm:ss a'),current, last, changePercent);
+				console.log(content);
+
+				if (last != 0 && Math.abs(changePercent) > percentForNotify) {
+					self.notifyEmail(content);
+				}
+				last = current;
 			}
-
-			var result = JSON.parse(body);
-			var current = parseFloat(result.ticker.last);
-			var changePercent = ((current - last) / current) * 100;
-
-			var content = util.format('[%s]\n当前价格为: %s\n上一次价格: %s\n变动比率:%s% \n==============', moment().format('MMMM Do YYYY, h:mm:ss a'),current, last, changePercent);
-			console.log(content);
-
-			if (last != 0 && Math.abs(changePercent) > percentForNotify) {
-				self.notifyEmail(content);
-			}
-			last = current;
 		});
 	};
 
